@@ -83,3 +83,21 @@ sudo bash test-backend.sh B1b_DRBD_vapak /dev/vg_kvm/fio-test /tmp/fio-results/B
 **Вывод:** DRBD 9.2 на thin-pool проигрывает 8.4 на толстом LV в 2-10 раз на случайных операциях. Thin provisioning добавляет оверхед на метаданные. P6 (fsync) — единственный профиль где 9.2 выигрывает (тонкий LV быстрее на fsync-bound нагрузке).
 
 Результаты в `results/B1b_DRBD_vapak/results.tar.gz` (27 JSON-файлов).
+
+---
+
+### Шаг 3: B2 — Ceph RBD (tssd)
+
+**Узел:** core3-s-tssd02n01.bstand.local (10.129.11.21)
+**Устройство:** `/dev/rbd0` (RBD 10GB, пул `one`, 7×7TB OSD)
+**Пользователь:** svlkravchuk (sudo через expect/PTY)
+
+**Команда:**
+```bash
+sudo bash test-backend.sh B2_CephRBD_tssd /dev/rbd0 /tmp/fio-results/B2_CephRBD_tssd
+```
+
+**Запущен:** 27.06.2026 ~21:00
+**Ожидаемая длительность:** ~1.5-2 часа
+
+🔄 Выполняется...
