@@ -1,0 +1,3 @@
+version: 9.2.8 (api:2/proto:86-122)
+GIT-hash: e163b05a76254c0f51f999970e861d72bb16409a build by builder@runner-v-w6stxqz-project-1752-concurrent-0, 2024-07-23 07:20:39
+Transports (api:20): tcp (9.2.8)

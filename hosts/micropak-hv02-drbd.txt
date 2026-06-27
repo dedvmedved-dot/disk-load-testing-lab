@@ -1,0 +1,4 @@
+version: 8.4.11 (api:1/proto:86-101)
+srcversion: 97D84A9BD1B00BA8E072B30 
+ 0: cs:Connected ro:Primary/Primary ds:UpToDate/UpToDate C r-----
+    ns:0 nr:994441076 dw:994441080 dr:2848512 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:0

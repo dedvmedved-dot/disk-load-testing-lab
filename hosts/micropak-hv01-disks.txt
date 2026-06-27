@@ -1,0 +1,20 @@
+NAME                     SIZE TYPE   MOUNTPOINT MODEL
+sda                      1,8T disk              SAMSUNG_MZ7LH1T9HMLT-00005
+├─sda1                   953M part   /boot/efi  
+└─sda2                   1,8T part              
+  ├─vg--system-root     46,6G lvm    /          
+  ├─vg--system-home     46,6G lvm    /home      
+  ├─vg--system-opt      18,6G lvm    /opt       
+  ├─vg--system-tmp      18,6G lvm    /tmp       
+  ├─vg--system-usr      46,6G lvm    /usr       
+  ├─vg--system-swap      9,3G lvm               
+  └─vg--system-var       1,6T lvm    /var       
+sdb                      1,8T disk              SAMSUNG_MZ7LH1T9HMLT-00005
+└─md0                    3,5T raid10            
+  └─drbd0                3,5T disk              
+    └─vg--pak-fio--test   10G lvm               
+sdc                      1,8T disk              SAMSUNG_MZ7LH1T9HMLT-00005
+└─md0                    3,5T raid10            
+  └─drbd0                3,5T disk              
+    └─vg--pak-fio--test   10G lvm               
+sdd                      1,8T disk              SAMSUNG_MZ7LH1T9HMLT-00005

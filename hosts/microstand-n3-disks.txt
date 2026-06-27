@@ -1,0 +1,20 @@
+NAME                             SIZE TYPE  MOUNTPOINT              MODEL
+sda                            136,7G disk                          LOGICAL VOLUME
+├─sda1                         488,3M part  /boot/efi               
+├─sda2                         953,7M part  /boot                   
+├─sda3                          46,6G part  /                       
+├─sda4                            20G part  /var                    
+├─sda5                             2M part                          
+└─sda6                          68,7G part  /opt                    
+sdb                              1,4T disk                          P2000 G3 FC
+└─data_lun01                     1,4T mpath                         
+  ├─vg_vmdata-lvmlock            256M lvm                           
+  ├─vg_vmdata-base_image-real     40G lvm                           
+  │ ├─vg_vmdata-base_image        40G lvm                           
+  │ └─vg_vmdata-vm--test--01      40G lvm                           
+  ├─vg_vmdata-vm--test--01-cow    15G lvm                           
+  │ └─vg_vmdata-vm--test--01      40G lvm                           
+  ├─vg_vmdata-vm--prod--01        80G lvm                           
+  └─vg_vmdata-monitoring          80G lvm                           
+sdc                              1,4T disk                          P2000 G3 FC
+└─data_lun02                     1,4T mpath

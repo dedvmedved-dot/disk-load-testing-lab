@@ -1,0 +1,4 @@
+ERR:/bin/sh: 1: CPU(s): not found
+/bin/sh: 1: Core | head -8: not found
+/bin/sh: 1: Thread: not found
+/b

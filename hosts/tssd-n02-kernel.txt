@@ -1,0 +1,1 @@
+Linux core3-s-tssd02n02.bstand.local 5.15.0-127-generic #astra1+ci4 SMP Fri Mar 7 15:34:27 MSK 2025 x86_64 GNU/Linux

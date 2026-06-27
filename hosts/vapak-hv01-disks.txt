@@ -1,0 +1,20 @@
+NAME                          SIZE TYPE MOUNTPOINT MODEL
+sda                           1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005
+├─sda1                        512M part /boot/efi  
+├─sda2                        1,8T part /          
+└─sda3                        977M part [SWAP]     
+sdb                           1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005
+└─drbd0                       1,8T disk            
+  ├─vg_kvm-thin_pool_tmeta     96M lvm             
+  │ └─vg_kvm-thin_pool-tpool  1,5T lvm             
+  │   ├─vg_kvm-thin_pool      1,5T lvm             
+  │   └─vg_kvm-test_vm         20G lvm             
+  ├─vg_kvm-thin_pool_tdata    1,5T lvm             
+  │ └─vg_kvm-thin_pool-tpool  1,5T lvm             
+  │   ├─vg_kvm-thin_pool      1,5T lvm             
+  │   └─vg_kvm-test_vm         20G lvm             
+  ├─vg_kvm-vm_ssd              20G lvm             
+  ├─vg_kvm-ipa--01             40G lvm             
+  ├─vg_kvm-ipa--01--clone      40G lvm             
+  ├─vg_kvm-mon                 50G lvm             
+  └─vg_kvm-fio--test           10G lvm

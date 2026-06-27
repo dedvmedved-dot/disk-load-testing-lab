@@ -1,0 +1,1 @@
+Linux hv-02.micropak.local 5.15.0-127-generic #astra1+ci5 SMP Wed Mar 26 15:55:06 MSK 2025 x86_64 GNU/Linux

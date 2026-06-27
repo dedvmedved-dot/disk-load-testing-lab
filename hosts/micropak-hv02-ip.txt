@@ -1,0 +1,12 @@
+eno1             DOWN           
+eno2             DOWN           
+eno3             DOWN           
+eno4             DOWN           
+eno5             UP             
+eno6             UP             
+bond0            UP             fe80::f6e5:f2ff:fec1:db33/64 
+bond0.21@bond0   UP             172.30.20.52/24 fe80::f6e5:f2ff:fec1:db33/64 
+bond0.101@bond0  UP             172.30.100.52/24 fe80::f6e5:f2ff:fec1:db33/64 
+bond0.301@bond0  UP             172.30.130.52/24 fe80::f6e5:f2ff:fec1:db33/64 
+bond0.401@bond0  UP             
+vmbr0            UP             fe80::f6e5:f2ff:fec1:db33/64

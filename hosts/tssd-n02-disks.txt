@@ -1,0 +1,20 @@
+NAME                                                                                                   SIZE TYPE MOUNTPOINT MODEL
+sda                                                                                                      7T disk            HWE52SS37T6L002N
+└─ceph--ddfbf898--d93c--4093--916c--2de221846bcf-osd--block--99d0245f--07f0--44ba--9044--1b286a8c0829    7T lvm             
+sdb                                                                                                      7T disk            HWE52SS37T6L002N
+└─ceph--435ecc74--be12--472b--9140--4e2c59907c52-osd--block--bc33f3a9--ef09--489c--b14c--3a2001654fcf    7T lvm             
+sdc                                                                                                      7T disk            HWE52SS37T6L002N
+└─ceph--b644eb6b--b361--4e3a--be63--2c1315b6e991-osd--block--2ef4b7f0--63b4--4b47--9b38--98c93cd11365    7T lvm             
+sdd                                                                                                      7T disk            HWE52SS37T6L002N
+└─ceph--03b91749--24a2--4954--9afb--d598baf5b289-osd--block--fe937bc1--8a6f--4fdd--b1f7--5287724e715b    7T lvm             
+sde                                                                                                      7T disk            HWE52SS37T6L002N
+└─ceph--2a3b9b76--c8e8--40b8--9483--5b906af97176-osd--block--8e0737f4--7ee1--4d90--b698--e81a6fd9e2e0    7T lvm             
+sdf                                                                                                      7T disk            HWE52SS37T6L002N
+└─ceph--d263d599--adc4--47b2--934e--97a7893bcac3-osd--block--841d155d--3b89--4243--8046--488b69e45f54    7T lvm             
+sdg                                                                                                      7T disk            HWE52SS37T6L002N
+sdh                                                                                                      7T disk            HWE52SS37T6L002N
+sdi                                                                                                      7T disk            HWE52SS37T6L002N
+sdj                                                                                                      7T disk            HWE52SS37T6L002N
+sdk                                                                                                      7T disk            HWE52SS37T6L002N
+sdl                                                                                                      7T disk            HWE52SS37T6L002N
+sdm                                                                                                    1,8T disk            HW-SAS3508

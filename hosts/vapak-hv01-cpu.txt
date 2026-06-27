@@ -1,0 +1,4 @@
+ERR:/bin/sh: 1: CPU(s): not found
+/bin/sh: 1: Socket: not found
+/bin/sh: 1: Thread: not found
+/bin/sh: 1

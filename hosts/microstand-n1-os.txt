@@ -1,0 +1,4 @@
+1.8.4
+PRETTY_NAME="Astra Linux"
+NAME="Astra Linux"
+ID=astra

@@ -1,0 +1,26 @@
+eth0             UP             
+eth1             UP             
+eth2             DOWN           
+eth3             DOWN           
+eth4             UP             
+eth5             UP             
+eth6             UP             
+eth7             UP             
+bond0            UP             fe80::1acf:24ff:fece:3667/64 
+vlan11@bond0     UP             
+br11             UP             10.129.11.23/24 fe80::1acf:24ff:fece:3667/64 
+bond1            UP             fe80::1acf:24ff:fe3b:4098/64 
+vlan12@bond1     UP             
+br12             UP             10.129.12.23/24 fe80::1acf:24ff:fe3b:4098/64 
+vnet0            UNKNOWN        fe80::fc54:ff:fefb:365a/64 
+vnet1            UNKNOWN        fe80::fc54:ff:fe65:3bf0/64 
+one-349-0        UNKNOWN        fe80::fc00:aff:fe81:b55/64 
+one-352-0        UNKNOWN        fe80::fc00:aff:fe81:b50/64 
+one-346-0        UNKNOWN        fe80::fc00:aff:fe81:b4a/64 
+one-334-0        UNKNOWN        fe80::fc00:aff:fe81:b4c/64 
+one-340-0        UNKNOWN        fe80::fc00:aff:fe81:b58/64 
+one-343-0        UNKNOWN        fe80::fc00:aff:fe81:b49/64 
+one-337-0        UNKNOWN        fe80::fc00:aff:fe81:b47/64 
+one-369-0        UNKNOWN        fe80::fc00:aff:fe81:b3d/64 
+one-367-0        UNKNOWN        fe80::fc00:aff:fe81:b37/64 
+one-374-0        UNKNOWN        fe80::fc00:aff:fe81:b3f/64

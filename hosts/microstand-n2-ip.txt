@@ -1,0 +1,14 @@
+enp3s0f0         UP             
+enp3s0f1         UP             
+enp4s0f0         DOWN           
+enp4s0f1         DOWN           
+ens1f0           DOWN           
+ens1f1           DOWN           
+ens1f2           DOWN           
+ens1f3           DOWN           
+bond0            UP             fe80::b699:baff:feb5:c580/64 
+bond0.21@bond0   UP             
+br21             UP             172.30.20.250/24 fe80::ccfc:2ff:fe7b:10fa/64 
+bond0.101@bond0  UP             fe80::b699:baff:feb5:c580/64 
+br101            UP             172.30.100.250/24 fe80::c46d:5eff:fef5:5368/64 
+vnet0            UNKNOWN        fe80::fc54:ff:fefa:2533/64

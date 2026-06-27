@@ -1,0 +1,1 @@
+Linux hv-02.vapak.local 5.15.0-111-generic #astra2+ci1 SMP Mon Jul 22 13:27:51 UTC 2024 x86_64 GNU/Linux

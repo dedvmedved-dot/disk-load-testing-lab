@@ -1,0 +1,20 @@
+NAME                      SIZE TYPE  MOUNTPOINT              MODEL
+sda                     136,7G disk                          LOGICAL VOLUME
+├─sda1                      2M part                          
+├─sda2                  953,7M part  /boot                   
+├─sda3                   46,6G part  /                       
+├─sda4                   18,6G part  /var                    
+├─sda5                   70,1G part  /opt                    
+└─sda6                    487M part  /boot/efi               
+sdb                       1,4T disk                          P2000 G3 FC
+└─data_lun01              1,4T mpath                         
+  ├─vg_vmdata-lvmlock     256M lvm                           
+  └─vg_vmdata-fio--test    10G lvm                           
+sdc                       1,4T disk                          P2000 G3 FC
+└─data_lun02              1,4T mpath                         
+sdd                     861,3G disk                          P2000 G3 FC
+└─data_lun03            861,3G mpath                         
+  ├─data_lun03-part1    430,6G part  /var/lib/libvirt/images 
+  └─data_lun03-part2    430,6G part                          
+sde                       1,4T disk                          P2000 G3 FC
+└─data_lun01              1,4T mpath

@@ -1,0 +1,11 @@
+NAME     SIZE TYPE MOUNTPOINT MODEL
+sda      1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005
+├─sda1   512M part /boot/efi  
+├─sda2   1,8T part /          
+└─sda3   977M part [SWAP]     
+sdb      1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005
+└─drbd0  1,8T disk            
+sdc      1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005
+sdd      1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005
+sde      1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005
+sdf      1,8T disk            SAMSUNG_MZ7LH1T9HMLT-00005

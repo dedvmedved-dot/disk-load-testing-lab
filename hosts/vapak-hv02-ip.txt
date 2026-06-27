@@ -1,0 +1,14 @@
+eth0             DOWN           
+eth1             DOWN           
+eth2             DOWN           
+eth3             DOWN           
+eth4             UP             
+eth5             UP             
+bond0            UP             fe80::f6e5:f2ff:fec1:da65/64 
+bond0.21@bond0   UP             172.30.20.152/24 fe80::f6e5:f2ff:fec1:da65/64 
+bond0.301@bond0  UP             172.30.130.152/24 fe80::f6e5:f2ff:fec1:da65/64 
+bond0.401@bond0  UP             172.30.140.152/24 fe80::f6e5:f2ff:fec1:da65/64 
+bond0.101@bond0  UP             
+vmbr0            UP             fe80::f6e5:f2ff:fec1:da65/64 
+virbr1           DOWN           192.168.200.1/24 
+vnet0            UNKNOWN        fe80::fc54:ff:fe11:b216/64

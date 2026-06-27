@@ -1,0 +1,1 @@
+Linux micro-s-bkvm1n1.microstand.local 6.1.152-1-generic #astra1+ci9 SMP PREEMPT_DYNAMIC Fri Oct 10 22:41:00 MSK 2025 x86_64 GNU/Linux
