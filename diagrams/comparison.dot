@@ -1,0 +1,103 @@
+digraph Disk_Load_Testing {
+    rankdir=TB;
+    splines=ortho;
+    nodesep=0.5;
+    ranksep=0.7;
+    fontname="Helvetica";
+    
+    labelloc="t";
+    label="Сравнительное нагрузочное тестирование дисковых подсистем СХД\n4 бэкенда · 7 профилей fio · Закон Литтла · USL-масштабируемость\n27 июня 2026";
+    fontsize=17;
+    fontcolor="#1A237E";
+    
+    node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, margin="0.12,0.08"];
+    edge [fontname="Helvetica", fontsize=8, color="#546E7A", arrowsize=0.7];
+
+    // ===== VPN =====
+    vpn [label="VPS Hermes Agent\nDeepSeek v4 Pro\nVPN: HuaweiHP (tun0) + Cisco815 (tun1)", shape=component, fillcolor="#E3F2FD", color="#0D47A1", fontsize=10];
+    
+    // ===== B1a DRBD 8.4 =====
+    subgraph cluster_b1a {
+        label="B1a: DRBD 8.4 (micropak)\nТОЛСТЫЙ LV — ЭТАЛОН";
+        style="filled,rounded";
+        fillcolor="#C8E6C9";
+        color="#2E7D32";
+        fontsize=10;
+        
+        b1a_hv01 [label="hv-01 (172.30.20.51)\nXeon 6254 18C/36T\n376 GB RAM\nDRBD 8.4 Protocol C", fillcolor="#A5D6A7", color="#1B5E20"];
+        b1a_hv02 [label="hv-02 (172.30.20.52)\nXeon 6248 20C/40T\n376 GB RAM\nDRBD 8.4 Protocol C", fillcolor="#A5D6A7", color="#1B5E20"];
+        b1a_dev [label="/dev/drbd0 3.5TB\nLVM vg-pak\nLV толстый 10GB\n───────\nP1 OLTP: 100K IOPS · 216μs\nP5 Metadata: 204K IOPS\nP6 fsync: 2.3K IOPS\n🏆 АБСОЛЮТНЫЙ ЛИДЕР", fillcolor="#66BB6A", color="#1B5E20", fontsize=9];
+        
+        b1a_hv01 -> b1a_hv02 [dir=both, label="DRBD sync", color="#2E7D32", style=bold];
+        b1a_hv02 -> b1a_dev [style=invis];
+    }
+    
+    // ===== B1b DRBD 9.2 =====
+    subgraph cluster_b1b {
+        label="B1b: DRBD 9.2 (vapak)\nTHIN POOL — ЗАМЕДЛЕНИЕ";
+        style="filled,rounded";
+        fillcolor="#FFF9C4";
+        color="#F57F17";
+        fontsize=10;
+        
+        b1b_hv01 [label="hv-01 (172.30.20.151)\n376 GB RAM\nDRBD 9.2.8\nLVM thin pool", fillcolor="#FFE082", color="#E65100"];
+        b1b_hv02 [label="hv-02 (172.30.20.152)\n376 GB RAM\nDRBD 9.2.8", fillcolor="#FFE082", color="#E65100"];
+        b1b_dev [label="/dev/vg_kvm/fio-test\nthin LV 10GB\n───────\nP1 OLTP: 51K IOPS · 562μs\nP5 Metadata: 81K IOPS\nP6 fsync: 4.3K IOPS\n⚠ -49% vs B1a (thin overhead)", fillcolor="#FFD54F", color="#E65100", fontsize=9];
+        
+        b1b_hv01 -> b1b_hv02 [dir=both, label="DRBD sync", color="#F57F17", style=bold];
+        b1b_hv02 -> b1b_dev [style=invis];
+    }
+    
+    // ===== B2 Ceph RBD =====
+    subgraph cluster_b2 {
+        label="B2: Ceph RBD (tssd)\n7×7TB OSD — СЕТЕВОЙ ОВЕРХЕД";
+        style="filled,rounded";
+        fillcolor="#E3F2FD";
+        color="#1565C0";
+        fontsize=10;
+        
+        b2_n01 [label="tssd-n01 (10.129.11.21)\n64C · 251 GB RAM\nOSD 6800-6815", fillcolor="#BBDEFB", color="#0D47A1"];
+        b2_n02 [label="tssd-n02 (10.129.11.22)\n64C · 251 GB RAM\nOSD 6800-6815", fillcolor="#BBDEFB", color="#0D47A1"];
+        b2_n03 [label="tssd-n03 (10.129.11.23)\n64C · 251 GB RAM\nOSD 6800-6815", fillcolor="#BBDEFB", color="#0D47A1"];
+        b2_dev [label="/dev/rbd0 (pool 'one')\nRBD 10GB\n───────\nP1 OLTP: 9.3K IOPS · 4.5ms\nP5 Metadata: 28K IOPS\nP6 fsync: 544 IOPS\n⚠ -82% vs B1a (network + replication)", fillcolor="#90CAF9", color="#0D47A1", fontsize=9];
+        
+        b2_n01 -> b2_n02 -> b2_n03 -> b2_n01 [dir=both, label="10.129.12/24\nCeph backend", color="#1565C0", style=bold];
+        b2_n03 -> b2_dev [style=invis];
+    }
+    
+    // ===== B3 HP P2000 =====
+    subgraph cluster_b3 {
+        label="B3: HP P2000 G3 FC (microstand)\nHDD — ОЖИДАЕМО СЛАБЫЙ";
+        style="filled,rounded";
+        fillcolor="#FFCDD2";
+        color="#C62828";
+        fontsize=10;
+        
+        b3_n1 [label="microstand-01\n(172.30.20.250)\n188 GB RAM\nFC multipath", fillcolor="#EF9A9A", color="#B71C1C"];
+        b3_dev [label="/dev/vg_vmdata/fio-test\nFC LUN 1.4TB\nLV толстый 10GB\n───────\nP1 OLTP: 1K IOPS · 22ms\nP5 Metadata: 1.4K IOPS\nP6 fsync: 1.4K IOPS\n⚠ -99% vs B1a (spinning HDD)", fillcolor="#E57373", color="#B71C1C", fontsize=9];
+        
+        b3_n1 -> b3_dev [style=invis];
+    }
+    
+    // ===== LEGEND =====
+    subgraph cluster_legend {
+        label="МЕТОДИКА ТЕСТИРОВАНИЯ";
+        style="filled,rounded";
+        fillcolor="#F5F5F5";
+        color="#9E9E9E";
+        fontsize=10;
+        
+        p1 [label="P1 OLTP: randrw 8K 70/30 qd=32", fillcolor="#EEEEEE", color="#757575", fontsize=8];
+        p5 [label="P5 Metadata: randread 4K qd=64", fillcolor="#EEEEEE", color="#757575", fontsize=8];
+        p6 [label="P6 fsync: randwrite 4K fsync=1 qd=1", fillcolor="#EEEEEE", color="#757575", fontsize=8];
+        p7 [label="P7 USL: qd 1→256, точка насыщения", fillcolor="#EEEEEE", color="#757575", fontsize=8];
+        
+        p1 -> p5 -> p6 -> p7 [style=invis];
+    }
+    
+    // VPN connections
+    vpn -> b1a_hv01 [style=dotted, color="#78909C"];
+    vpn -> b1b_hv01 [style=dotted, color="#78909C"];
+    vpn -> b2_n01 [style=dotted, color="#78909C"];
+    vpn -> b3_n1 [style=dotted, color="#78909C"];
+}
