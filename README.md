@@ -66,7 +66,9 @@ sudo bash scripts/test-backend.sh ИМЯ_БЭКЕНДА /dev/ТЕСТОВЫЙ_LV
 
 ### Схема стенда
 
-![Сравнение бэкендов](diagrams/comparison.svg)
+![Сравнение бэкендов](diagrams/comparison_readme.jpg)
+
+Полная версия для печати: [comparison.jpg](diagrams/comparison.jpg) (3500px, 300 DPI) | [SVG](diagrams/comparison.svg)
 
 ## Выводы
 
