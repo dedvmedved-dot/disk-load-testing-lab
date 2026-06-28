@@ -1,0 +1,17 @@
+digraph USL_Concept {
+    rankdir=TB
+    splines=ortho
+    fontname="Helvetica"
+    label="USL-кривые: IOPS = f(queue_depth)"
+    fontsize=14
+    
+    node [shape=box style="rounded,filled" fillcolor="#1a1a2e" fontcolor=white]
+    
+    ideal [label="Идеал:\nIOPS растёт линейно\nс ростом очереди" fillcolor="#1B5E20"]
+    real [label="Реальность:\nрост замедляется\nвыход на плато\nвозможна деградация" fillcolor="#C62828"]
+    qd_low [label="qd=1-8\nНедогрузка\nдиск могёт больше" fillcolor="#0f3460"]
+    qd_opt [label="qd=16-32\nОптимум\nмакс IOPS\nразумная latency" fillcolor="#0f3460"]
+    qd_high [label="qd=64-256\nПерегрузка\nIOPS не растёт\nlatency взлетает" fillcolor="#0f3460"]
+    
+    qd_low -> qd_opt -> qd_high
+}

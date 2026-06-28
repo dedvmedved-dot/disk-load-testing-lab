@@ -1,0 +1,36 @@
+digraph WhyMethodology {
+    rankdir=TB
+    splines=ortho
+    fontname="Helvetica"
+    label="Почему нужна методика тестирования"
+    fontsize=14
+    
+    node [shape=box style="rounded,filled" fillcolor="#1a1a2e" fontcolor=white]
+    
+    problem [label="Проблема:\nкаждый тип нагрузки\nтребует своего теста" fillcolor="#533483"]
+    
+    subgraph cluster_scenarios {
+        label="Типы нагрузки"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        oltp [label="База данных\nмного мелких\nчтений/записей"]
+        backup [label="Резервное\nкопирование\nбольшие файлы"]
+        vm [label="Виртуализация\nсмешанная\nнагрузка"]
+        search [label="Поиск\nиндексация\nметаданные"]
+    }
+    
+    subgraph cluster_requirements {
+        label="Что важно"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        iops_r [label="IOPS\n+ низкая latency"]
+        throughput_r [label="Throughput\nMB/s"]
+        mixed_r [label="Баланс\nIOPS + latency"]
+        lat_r [label="Много IOPS\nпри большом qd"]
+    }
+    
+    oltp -> iops_r
+    backup -> throughput_r
+    vm -> mixed_r
+    search -> lat_r
+}

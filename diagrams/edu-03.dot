@@ -1,0 +1,15 @@
+digraph ReadingResults {
+    rankdir=TB
+    splines=ortho
+    fontname="Helvetica"
+    label="Как читать результаты"
+    fontsize=14
+    
+    node [shape=box style="rounded,filled" fillcolor="#1a1a2e" fontcolor=white]
+    
+    iops_n [label="Высокий IOPS — хорошо\nно не всегда достаточно" fillcolor="#0f3460"]
+    lat_n [label="Низкая latency\nчасто важнее IOPS" fillcolor="#0f3460"]
+    throughput_n [label="Для бэкапов\nважнее throughput" fillcolor="#0f3460"]
+    fsync_n [label="Для баз данных\nкритичен fsync" fillcolor="#0f3460"]
+    scale_n [label="Для облака важны:\nмасштабируемость\nотказоустойчивость" fillcolor="#0f3460"]
+}

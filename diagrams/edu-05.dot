@@ -1,0 +1,16 @@
+digraph Mistakes {
+    rankdir=TB
+    splines=ortho
+    fontname="Helvetica"
+    label="Типовые ошибки тестирования"
+    fontsize=14
+    
+    node [shape=box style="rounded,filled" fillcolor="#1a1a2e" fontcolor=white]
+    
+    m1 [label="❌ Нет direct=1\nтестируется кэш ОС\nне диск" fillcolor="#C62828"]
+    m2 [label="❌ Маленький файл\nпоместился в кэш\nрезультат завышен" fillcolor="#C62828"]
+    m3 [label="❌ Один прогон\nнет повторов\nслучайный выброс" fillcolor="#C62828"]
+    m4 [label="❌ Нет прогрева\nпервые секунды\nискажают картину" fillcolor="#C62828"]
+    m5 [label="❌ Тест на production\nможно потерять\nрабочие данные" fillcolor="#C62828"]
+    m6 [label="❌ Сравнение по IOPS\nбез учёта latency\nи типа нагрузки" fillcolor="#C62828"]
+}

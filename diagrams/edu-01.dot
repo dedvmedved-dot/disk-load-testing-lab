@@ -1,0 +1,56 @@
+digraph Infrastructure {
+    rankdir=TB
+    splines=ortho
+    nodesep=0.6
+    ranksep=0.8
+    fontname="Helvetica"
+    label="Архитектура тестового стенда"
+    fontsize=16
+    
+    node [shape=box style="rounded,filled" fillcolor="#1a1a2e" fontcolor=white]
+    
+    subgraph cluster_vapak {
+        label="ПАК ВАПАК\nDRBD 9.2 + raw SSD"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        vapak1 [label="hv-01\n172.30.20.151\n18C · 376 GB RAM"]
+        vapak2 [label="hv-02\n172.30.20.152\n20C · 376 GB RAM"]
+        drbd92 [label="DRBD 9.2\n1.8TB\nthin pool" shape=cylinder fillcolor="#533483"]
+        ssd [label="raw SSD\nsdc 1.8T" shape=cylinder fillcolor="#533483"]
+        vapak1 -> drbd92
+        vapak2 -> drbd92
+        vapak1 -> ssd
+    }
+    
+    subgraph cluster_micropak {
+        label="ПАК МикроПАК\nDRBD 8.4"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        mic1 [label="hv-01\n172.30.20.51\n18C · 376 GB RAM"]
+        mic2 [label="hv-02\n172.30.20.52\n20C · 376 GB RAM"]
+        drbd84 [label="DRBD 8.4\n3.5TB\nтолстый LV" shape=cylinder fillcolor="#533483"]
+        mic1 -> drbd84
+        mic2 -> drbd84
+    }
+    
+    subgraph cluster_tssd {
+        label="ЦКС TSSD\nCeph RBD + HP P2000"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        tssd1 [label="tssd-n01\n10.129.11.21\n64C · 251 GB"]
+        tssd2 [label="tssd-n02\n10.129.11.22\n64C · 251 GB"]
+        tssd3 [label="tssd-n03\n10.129.11.23\n64C · 251 GB"]
+        ceph [label="Ceph RBD\n7×7TB OSD\nпул 'one'" shape=cylinder fillcolor="#533483"]
+        hp [label="HP P2000 G3 FC\n1.4T LUN" shape=cylinder fillcolor="#533483"]
+        tssd1 -> ceph
+        tssd2 -> ceph
+        tssd3 -> ceph
+        hp -> tssd1 [style=dashed color="#666"]
+    }
+    
+    vps [label="VPS\n170.168.91.95\nHermes Agent\nDeepSeek v4 Pro" fillcolor="#e94560"]
+    
+    vps -> mic1 [label="HuaweiHP VPN" color="#00ff88"]
+    vps -> vapak1 [label="HuaweiHP VPN" color="#00ff88"]
+    vps -> tssd1 [label="Cisco815 VPN" color="#00ff88"]
+}
