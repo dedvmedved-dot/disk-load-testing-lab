@@ -1,0 +1,52 @@
+digraph Infrastructure {
+    rankdir=TB
+    splines=ortho
+    nodesep=0.6
+    ranksep=0.8
+    fontname="Helvetica"
+    label="Архитектура тестового стенда"
+    fontsize=16
+    
+    node [shape=box style="rounded,filled" fillcolor="#1a1a2e" fontcolor=white]
+    
+    subgraph cluster_vapak {
+        label="ПАК ВАПАК (DRBD 9.2)"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        vapak1 [label="hv-01\n172.30.20.151\nXeon 18C · 376 GB"]
+        vapak2 [label="hv-02\n172.30.20.152\nXeon 20C · 376 GB"]
+        drbd92 [label="DRBD 9.2\ndual-primary\n/dev/drbd0 1.8TB\nLVM thin pool" shape=cylinder fillcolor="#533483"]
+        vapak1 -> drbd92
+        vapak2 -> drbd92
+    }
+    
+    subgraph cluster_tssd {
+        label="ЦКС TSSD (Ceph RBD)"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        tssd1 [label="tssd-n01\n10.129.11.21\n64C · 251 GB"]
+        tssd2 [label="tssd-n02\n10.129.11.22\n64C · 251 GB"]
+        tssd3 [label="tssd-n03\n10.129.11.23\n64C · 251 GB"]
+        ceph [label="Ceph RBD\n7×7TB OSD\nпул 'one'\n3x репликация" shape=cylinder fillcolor="#533483"]
+        tssd1 -> ceph
+        tssd2 -> ceph
+        tssd3 -> ceph
+        ceph_net [label="10.129.12/24\nCeph backend\nMTU 9000" shape=note fillcolor="#2a2a4e" fontsize=8]
+        ceph -> ceph_net [style=dotted color="#666"]
+    }
+    
+    subgraph cluster_microstand {
+        label="Микростенд (HP P2000)"
+        fontcolor=white fillcolor="#16213e" style=filled
+        node [fillcolor="#0f3460"]
+        micro [label="bkvm1n1\n172.30.20.250\nXeon · 188 GB"]
+        hp [label="HP P2000 G3 FC\nFC LUN 1.4TB\nvg_vmdata\nВРАЩАЮЩИЕСЯ ДИСКИ" shape=cylinder fillcolor="#533483"]
+        micro -> hp
+    }
+    
+    vps [label="VPS\n170.168.91.95\nDeepSeek v4 Pro\nfio-тесты" fillcolor="#e94560"]
+    
+    vps -> vapak1 [label="HuaweiHP VPN" color="#00ff88"]
+    vps -> tssd1 [label="Cisco815 VPN" color="#00ff88"]
+    vps -> micro [label="HuaweiHP VPN" color="#00ff88"]
+}
